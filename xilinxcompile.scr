@@ -1,0 +1,14 @@
+
+run
+-ifn ../$1.prj
+-ifmt mixed
+-p xc6vlx240t-ff1156-1
+-iob false
+-bufg 0
+-top $1
+-ofn $1.ngc
+-opt_mode SPEED
+-opt_level 2
+-ofmt NGC
+-uc ../$1.xcf
+-write_timing_constraints yes

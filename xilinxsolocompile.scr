@@ -1,0 +1,15 @@
+
+run
+-ifn ../$1.prj
+-ifmt mixed
+-p xc7vx330t-ffg1157-2 
+-iob false
+-bufg 0
+-top $1
+-ofn $1.ngc
+-opt_mode SPEED
+-opt_level 2
+-keep_hierarchy yes
+-ofmt NGC
+-uc ../$1.xcf
+-write_timing_constraints yes
