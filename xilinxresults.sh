@@ -11,6 +11,7 @@ clk=`cat results_$1/$1.twr | grep "CP achieved:" | sed "s/CP achieved:\ *//g"`
 echo ${area:=0} ${dsp:=0} ${bram:=0} ${clk:=0} > /dev/null
 
 if [[ $2 -eq 0 ]]; then
+	printf "bench area dsp bram clk\n" $1 $area $dsp $bram $clk
 	printf "%35s %5d %5d %5d %5d\n" $1 $area $dsp $bram $clk
 else
 	echo \'$area\', \'$dsp\', \'$bram\', \'$clk\'

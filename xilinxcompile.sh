@@ -14,7 +14,7 @@ else
 	exit;
 fi
 
-export PATH=$PATH:/opt/Xilinx/14.2/ISE_DS/ISE/bin/lin64
+export PATH=$PATH:/opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64
 
 echo ${2:=clk}
 
@@ -40,9 +40,9 @@ do
 done
 
 # eval synth script (really stupid and needles...)
-cp -f ~/bin/xilinxcompile.scr ../$1.scr
+cp -f ~/.oh-my-xilinx/xilinxcompile.scr ../$1.scr
 sed -i "s/\$1/$1/g"  ../$1.scr
-cp -f ~/bin/xilinxcompile.xcf ../$1.xcf
+cp -f ~/.oh-my-xilinx/xilinxcompile.xcf ../$1.xcf
 sed -i "s/\$2/$2/g"  ../$1.xcf
 
 # copy any Coregen cores
