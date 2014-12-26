@@ -4,6 +4,7 @@ run
 -ifmt mixed
 -p xc7z020clg484-1
 -iob false
+-iobuf NO
 -bufg 0
 -top $1
 -ofn $1.ngc
