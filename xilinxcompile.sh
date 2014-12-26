@@ -50,9 +50,10 @@ cp ../*.ngc .
 
 # compile and map through the steps of xilinx flow..
 xst -ifn ../$1.scr 
-ngdbuild -verbose $1.ngc #-uc ../$1.ucf
+ngdbuild -verbose $1.ngc -uc ../$1.ucf
 map -w -u -timing -ol high -pr b -o mapped.ncd $1.ngd mapped.pcf
 par -ol std -w mapped.ncd $1.ncd mapped.pcf
+cp mapped.pcf $1.pcf
 trce -u -v 100 $1.ncd
 
 cd ..
