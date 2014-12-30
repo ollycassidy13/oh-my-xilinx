@@ -12,8 +12,7 @@ Note that you need to rename the directory after cloning.
 --------------
 How to run
 --------------
-Set your PATH variable to include ~/.oh-my-xilinx
-Also make sure the XILINX paths are properly setup as well
+Set your PATH variable to include ~/.oh-my-xilinx. Also make sure the XILINX paths are properly setup as well
 
 To compile code sitting inside a folder just run:
 
