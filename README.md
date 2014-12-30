@@ -5,7 +5,7 @@ toolchain on research problems.
 How to install
 ----------------
 
-Note that you need to rename the directory after cloning.
+You need to clone the directory in the $HOME folder. Note that you need to rename the directory after cloning.
 
 ```git clone git@git.assembla.com:oh-my-xilinx.git ~/.oh-my-xilinx```
 
