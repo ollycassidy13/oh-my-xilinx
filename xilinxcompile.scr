@@ -11,5 +11,6 @@ run
 -opt_mode SPEED
 -opt_level 2
 -ofmt NGC
+-rom_extract YES
 -uc ../$1.xcf
 -write_timing_constraints yes
