@@ -52,10 +52,10 @@ do
 
 done
 
-cp -f ~/.oh-my-xilinx/vivadocompile.xdc .
-sed -i "s/clk/$2/g" vivadocompile.xdc
+cp -f ~/.oh-my-xilinx/vivadocompile.xdc $1.xdc
+sed -i "s/clk/$2/g" $1.xdc
 
 # compile and map through the steps of xilinx flow..
-vivado -mode tcl -source $1.tcl -tclargs 1=$1
+vivado -mode tcl -source $1.tcl -tclargs $1
 
 cd ..
