@@ -75,39 +75,16 @@ if {[string equal [get_filesets -quiet sources_1] ""]} {
 
 # Set 'sources_1' fileset object
 set obj [get_filesets sources_1]
-set files [list \
- "[file normalize "$origin_dir/../../latest_dsp_code/phalanx.h"]"\
- "[file normalize "$origin_dir/../../latest_dsp_code/dor.v"]"\
- "[file normalize "$origin_dir/../../latest_dsp_code/hoplite.v"]"\
- "[file normalize "$origin_dir/../../latest_dsp_code/phalanx_tb.h"]"\
- "[file normalize "$origin_dir/../../latest_dsp_code/client_for_synth.v"]"\
- "[file normalize "$origin_dir/../../latest_dsp_code/parameter.v"]"\
- "[file normalize "$origin_dir/../../latest_dsp_code/dsp_mux.v"]"\
- "[file normalize "$origin_dir/../../latest_dsp_code/dsp_mux_passthru.v"]"\
- "[file normalize "$origin_dir/../../latest_dsp_code/dsp_mux_wrap_out.v"]"\
- "[file normalize "$origin_dir/../../latest_dsp_code/dsp_mux_wrap_in.v"]"\
- "[file normalize "$origin_dir/../../latest_dsp_code/phalanx.h"]"\
- "[file normalize "$origin_dir/../../latest_dsp_code/phalanx.v"]"\
-]
+# dynamically generate list of source files
+source sources.tcl
 add_files -norecurse -fileset $obj $files
 
 # Set 'sources_1' fileset file properties for remote files
-set file "$origin_dir/../../latest_dsp_code/phalanx.h"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "Verilog Header" $file_obj
-
-set file "$origin_dir/../../latest_dsp_code/phalanx_tb.h"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "Verilog Header" $file_obj
-
-# Set 'sources_1' fileset file properties for local files
-# None
+source headers.tcl
 
 # Set 'sources_1' fileset properties
 set obj [get_filesets sources_1]
-set_property "top" "$1" $obj
+set_property "top" "$argv[1]" $obj
 
 # Create 'constrs_1' fileset (if not found)
 if {[string equal [get_filesets -quiet constrs_1] ""]} {
@@ -139,7 +116,7 @@ set obj [get_filesets sim_1]
 
 # Set 'sim_1' fileset properties
 set obj [get_filesets sim_1]
-set_property "top" "$1" $obj
+set_property "top" "$argv[1]" $obj
 set_property "xelab.nosort" "1" $obj
 set_property "xelab.unifast" "" $obj
 
