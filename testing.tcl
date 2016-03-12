@@ -208,6 +208,7 @@ proc add_source_files {} {
    puts "$myScript: Adding sources to project..."
 
    xfile add "$1"
+   source sources.tcl
    xfile add "constraint.ucf"
 
    # Set the Top Module as well...
@@ -257,6 +258,7 @@ proc set_process_props {} {
    puts "$myScript: setting process properties..."
 
    project set "Compiled Library Directory" "\$XILINX/<language>/<simulator>"
+   project set "Auto Implementation Top" "true"
    project set "Use DSP Block" "Auto" -process "Synthesize - XST"
    project set "DCI Update Mode" "As Required" -process "Generate Programming File"
    project set "Enable Cyclic Redundancy Checking (CRC)" "true" -process "Generate Programming File"
@@ -276,7 +278,7 @@ proc set_process_props {} {
    project set "Manual Compile Order" "false"
    project set "Placer Effort Level" "High" -process "Map"
    project set "Extra Cost Tables" "0" -process "Map"
-   project set "LUT Combining" "On" -process "Map"
+   project set "LUT Combining" "Area" -process "Map"
    project set "Combinatorial Logic Optimization" "false" -process "Map"
    project set "Starting Placer Cost Table (1-100)" "1" -process "Map"
    project set "Power Reduction" "Off" -process "Map"
@@ -379,7 +381,7 @@ proc set_process_props {} {
    project set "Generate Detailed MAP Report" "false" -process "Map"
    project set "Map Slice Logic into Unused Block RAMs" "false" -process "Map"
    project set "Perform Timing-Driven Packing and Placement" "false"
-   project set "Trim Unconnected Signals" "true" -process "Map"
+   project set "Trim Unconnected Signals" "false" -process "Map"
    project set "Create I/O Pads from Ports" "false" -process "Translate"
    project set "Macro Search Path" "" -process "Translate"
    project set "Netlist Translation Type" "Timestamp" -process "Translate"
@@ -398,7 +400,7 @@ proc set_process_props {} {
    project set "Report Type" "Verbose Report" -process "Generate Post-Map Static Timing"
    project set "Number of Paths in Error/Verbose Report" "3" -process "Generate Post-Map Static Timing"
    project set "Report Unconstrained Paths" "" -process "Generate Post-Map Static Timing"
-   project set "Add I/O Buffers" "true" -process "Synthesize - XST"
+   project set "Add I/O Buffers" "false" -process "Synthesize - XST"
    project set "Global Optimization Goal" "AllClockNets" -process "Synthesize - XST"
    project set "Keep Hierarchy" "No" -process "Synthesize - XST"
    project set "Register Balancing" "No" -process "Synthesize - XST"
@@ -419,6 +421,7 @@ proc set_process_props {} {
    project set "Generics, Parameters" "" -process "Synthesize - XST"
    project set "Hierarchy Separator" "/" -process "Synthesize - XST"
    project set "HDL INI File" "" -process "Synthesize - XST"
+   project set "Auto Implementation Top" "true" -process "Synthesize - XST"
    project set "LUT Combining" "Auto" -process "Synthesize - XST"
    project set "Library Search Order" "" -process "Synthesize - XST"
    project set "Netlist Hierarchy" "As Optimized" -process "Synthesize - XST"

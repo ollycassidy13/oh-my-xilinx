@@ -8,7 +8,7 @@ else
 	exit;
 fi
 
-export PATH=$PATH:/opt/Xilinx/14.2/ISE_DS/ISE/bin/lin64
+export PATH=$PATH:/opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64
 
 echo ${2:=clk}
 
@@ -31,6 +31,7 @@ if [[ -f $1.v  ]]; then
 fi
 
 sed -i "s/\$2/$1/g"  $1.tcl
+touch sources.tcl
 
 cp -f ~/bin/xilinxsolocompile.ucf constraint.ucf
 sed -i "s/\$1/$1/g" constraint.ucf
