@@ -122,7 +122,7 @@ set_property "xelab.unifast" "" $obj
 
 # Create 'synth_1' run (if not found)
 if {[string equal [get_runs -quiet synth_1] ""]} {
-  create_run -name synth_1 -part xc7vx485tffg1761-2 -flow {Vivado Synthesis 2015} -strategy "Flow_PerfOptimized_high" -constrset constrs_1
+  create_run -name synth_1 -part xc7vx485tffg1761-2 -flow {Vivado Synthesis 2015} -strategy "Flow_PerfOptimized_high" -constrset constrs_1 -mode out_of_context
 } else {
   set_property strategy "Flow_PerfOptimized_high" [get_runs synth_1]
   set_property flow "Vivado Synthesis 2015" [get_runs synth_1]
@@ -136,7 +136,6 @@ set_property "steps.synth_design.args.no_lc" "1" $obj
 set_property "steps.synth_design.args.shreg_min_size" "5" $obj
 set_property "steps.synth_design.args.max_bram" "0" $obj
 set_property "steps.synth_design.args.max_dsp" "0" $obj
-set_property "steps.synth_design.args.out_of_context" "1" $obj
 
 # set the current synth run
 current_run -synthesis [get_runs synth_1]
