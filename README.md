@@ -1,4 +1,4 @@
-These are shell scripts for invoking the Xilinx Vivado toolchain on smallish RTL projects to quickly estimate resource utilization and timing of designs. (repo named after the cool .oh-my-zsh project)
+These are shell scripts for invoking the Xilinx Vivado toolchain on smallish RTL projects to quickly estimate resource utilization and timing of designs. The hardware is assumed to be the VC707 board. (repo named after the cool .oh-my-zsh project)
 
 ----------------
 How it works
