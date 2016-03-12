@@ -20,7 +20,7 @@ cd results_$1
 cp ../$1.vhd .
 cp ../$1.v .
 
-cp ~/bin/testing.tcl $1.tcl
+cp ~/.oh-my-xilinx/testing.tcl $1.tcl
 
 if [[ -f $1.vhd  ]]; then
 	sed -i "s/\$1/$1.vhd/g"  $1.tcl
@@ -33,7 +33,7 @@ fi
 sed -i "s/\$2/$1/g"  $1.tcl
 touch sources.tcl
 
-cp -f ~/bin/xilinxsolocompile.ucf constraint.ucf
+cp -f ~/.oh-my-xilinx/xilinxsolocompile.ucf constraint.ucf
 sed -i "s/\$1/$1/g" constraint.ucf
 
 # copy any Coregen cores
