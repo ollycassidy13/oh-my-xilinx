@@ -39,6 +39,7 @@ for i in *.h
 do
 	echo "\"[file normalize \"\$origin_dir/$i\"]\"\\" >> sources.tcl
 done
+echo "]" >> sources.tcl
 echo "add_files -norecurse -fileset \$obj \$files" >> sources.tcl
 
 for i in *.h
