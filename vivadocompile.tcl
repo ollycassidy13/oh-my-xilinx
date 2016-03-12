@@ -136,6 +136,7 @@ set_property "steps.synth_design.args.no_lc" "1" $obj
 set_property "steps.synth_design.args.shreg_min_size" "5" $obj
 set_property "steps.synth_design.args.max_bram" "0" $obj
 set_property "steps.synth_design.args.max_dsp" "0" $obj
+set_property "steps.synth_design.args.out_of_context" "1" $obj
 
 # set the current synth run
 current_run -synthesis [get_runs synth_1]
