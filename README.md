@@ -1,4 +1,4 @@
-These are shell scripts for invoking the Xilinx Vivado toolchain on smallish RTL projects to quickly estimate resource utilization and timing of designs. 
+These are shell scripts for invoking the Xilinx Vivado toolchain on smallish RTL projects to quickly estimate resource utilization and timing of designs. (repo named after the cool .oh-my-zsh project)
 
 ----------------
 How it works
@@ -33,6 +33,7 @@ Testing Notes
 --------------
 Tested to work on Ubuntu 14.04 64b and Vivado 2015.4 toolchain. Older Xilinx releases are also supported using other scripts in the folder "xilinxcompile.sh", etc.
 
-Thanks: This git repository is inspired by oh-my-zsh
-
+--------------
+Author Notes
+--------------
 Contact: Nachiket Kapre (nachiket@ieee.org)
