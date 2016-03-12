@@ -1,5 +1,4 @@
-These are shell scripts that are compatible with zsh for invoking the Xilinx
-toolchain on smallish research projects. The scripts are intended to quickly estimate resource utilization and timing of small Verilog/RTL designs. 
+These are shell scripts for invoking the Xilinx Vivado toolchain on smallish RTL projects to quickly estimate resource utilization and timing of designs. 
 
 ----------------
 How it works
@@ -19,7 +18,7 @@ How to run
 --------------
 Set your PATH variable to include ~/.oh-my-xilinx. Also make sure the XILINX paths are properly setup as well.
 
-```export PATH=$PATH:~/.oh-my-xilinx
+```export PATH=$PATH:~/.oh-my-xilinx```
 
 To compile code sitting inside a folder just run:
 
