@@ -32,4 +32,6 @@ To collect results in a nice summary run: (Not implemented yet)
 Testing Notes
 --------------
 Tested to work on Ubuntu 14.04 64b and Vivado 2015.4 toolchain. Older Xilinx releases are also supported using other scripts in the folder "xilinxcompile.sh", etc.
+
 Thanks: This git repository is inspired by oh-my-zsh
+Author: Nachiket Kapre (nachiket@ieee.org)
