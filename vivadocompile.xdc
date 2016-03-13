@@ -1,2 +1,2 @@
-create_clock -period 2.500 -waveform {0.000 1.250} [get_nets clk]
+create_clock -period 2.000 -waveform {0.000 1.000} [get_nets clk]
 
