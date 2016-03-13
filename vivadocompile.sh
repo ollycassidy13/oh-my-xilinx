@@ -27,6 +27,7 @@ cd results_$1
 cp ../*.vhd .
 cp ../*.v .
 cp ../*.h .
+cp ../*.xdc .
 
 cp ~/.oh-my-xilinx/vivadocompile.tcl $1.tcl
 
@@ -53,6 +54,11 @@ done
 
 cp -f ~/.oh-my-xilinx/vivadocompile.xdc $1.xdc
 sed -i "s/clk/$2/g" $1.xdc
+
+for i in *.xdc
+do
+	echo $i >> $1.xdc
+done
 
 # compile and map through the steps of xilinx flow..
 # my Ubuntu install doesn't like this
