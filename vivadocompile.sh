@@ -32,11 +32,11 @@ cp ../*.xdc .
 cp ~/.oh-my-xilinx/vivadocompile.tcl $1.tcl
 
 echo "set files [list \\" > sources.tcl
-for i in *.v
+for i in *.h
 do
 	echo "\"[file normalize \"\$origin_dir/$i\"]\"\\" >> sources.tcl
 done
-for i in *.h
+for i in *.v
 do
 	echo "\"[file normalize \"\$origin_dir/$i\"]\"\\" >> sources.tcl
 done
@@ -57,7 +57,7 @@ sed -i "s/clk/$2/g" $1.xdc
 
 for i in *.xdc
 do
-	echo $i >> $1.xdc
+	cat $i >> $1.xdc
 done
 
 # compile and map through the steps of xilinx flow..
