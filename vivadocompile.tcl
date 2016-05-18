@@ -130,6 +130,7 @@ if {[string equal [get_runs -quiet synth_1] ""]} {
 }
 set obj [get_runs synth_1]
 
+set_property -name {steps.synth_design.args.more options} -value {-mode out_of_context} -objects $obj
 #set_property "steps.synth_design.args.flatten_hierarchy" "none" $obj
 #set_property "steps.synth_design.args.fanout_limit" "400" $obj
 #set_property "steps.synth_design.args.keep_equivalent_registers" "1" $obj

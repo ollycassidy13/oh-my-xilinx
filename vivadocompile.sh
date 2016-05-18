@@ -52,7 +52,7 @@ do
 
 done
 
-cp -f ~/.oh-my-xilinx/vivadocompile.xdc $1.xdc
+cat ~/.oh-my-xilinx/vivadocompile.xdc >> $1.xdc
 sed -i "s/clk/$2/g" $1.xdc
 
 for i in *.xdc
