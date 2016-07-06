@@ -33,6 +33,7 @@ cp ../*.h .
 cp ../*.xdc .
 
 cp ~/.oh-my-xilinx/vivadocompile.tcl $1.tcl
+touch dummy_nachiket_fooling_zsh_for_loops.h
 
 echo "set files [list \\" > sources.tcl
 for i in *.h
