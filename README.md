@@ -13,6 +13,8 @@ You need to clone the directory in the $HOME folder. Note that you need to renam
 
 ```git clone git@git.bitbucket.com:nachiketkapre/oh-my-xilinx.git ~/.oh-my-xilinx```
 
+Probably want to modify PATH variable in vivadocompile.sh appropriately for your setup.
+
 --------------
 How to run
 --------------
