@@ -3,7 +3,7 @@ These are shell scripts for invoking the Xilinx Vivado toolchain on smallish RTL
 ----------------
 How it works
 ----------------
-The script adds all Verilog files in given folder to a Vivado project and runs the Synthesis and Implementation phases. It then exports the area/timing/power reports for investigation by the user.
+The script adds all Verilog or VHDL files in given folder to a Vivado project and runs the Synthesis and Implementation phases. It then exports the area/timing/power reports for investigation by the user.
 
 ----------------
 How to install
