@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # --- Assumptions ---
-#	Clock:		clock@3ns 
+#	Clock:		clock = 2ns 
 #	File:		*.vhd, *.vhdl, *.v all in same directory..
 #	Results:	stored in ./results_$1
 #	Board:		VC707 - Virtex-7 VX485T FPGA
@@ -10,12 +10,15 @@
 if ((${+1}))
 then
 else
-	echo "Usage: vivadocompile.sh <top-level-entity-name> <clk-name>";
+	echo "Usage: vivadocompile.sh <top-level-entity-name> <clk-name (optional)>";
+	echo "<top-level-entity-name> should not contain the .v or .vhd extension";
 	exit;
 fi
 
+# this may need to be adjusted to individual machine/tool version
 export PATH=$PATH:/opt/Xilinx/Vivado/2015.4/bin
 
+# use clk as default name for clock signal if not supplied.
 echo ${2:=clk}
 
 # clean results..
@@ -52,6 +55,7 @@ do
 
 done
 
+# caution: this overwrites the local $1.xdc file if that exists
 cat ~/.oh-my-xilinx/vivadocompile.xdc >> $1.xdc
 sed -i "s/clk/$2/g" $1.xdc
 
