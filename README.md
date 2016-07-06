@@ -24,7 +24,7 @@ To compile code sitting inside a folder just run:
 
 ```vivadocompile.sh <top-level-entity> <clock-name>```
 
-To collect results in a nice summary run: (Not implemented yet)
+To collect results in a nice summary run:
  
 ```vivadoresults.sh <top-level-entity>```
 
