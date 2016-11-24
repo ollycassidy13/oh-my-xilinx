@@ -15,9 +15,6 @@ else
 	exit;
 fi
 
-# this may need to be adjusted to individual machine/tool version
-export PATH=$PATH:/opt/Xilinx/Vivado/2015.4/bin
-
 # use clk as default name for clock signal if not supplied.
 echo ${2:=clk}
 
