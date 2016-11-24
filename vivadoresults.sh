@@ -18,5 +18,6 @@ cat results_$1/vivado.log | grep LUTs
 cat results_$1/vivado.log | grep "Slice Registers"
 cat results_$1/vivado.log | grep DSPs 
 cat results_$1/vivado.log | grep "Slack (MET)"
+cat results_$1/vivado.log | grep "Slack (VIOLATED)"
 cat results_$1/vivado.log | grep "Requirement"
 cat results_$1/vivado.log | grep "Total On-Chip Power (W)"
