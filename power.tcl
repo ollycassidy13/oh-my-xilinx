@@ -1,13 +1,20 @@
-source ./settings.tcl
-source ./extraction.tcl
+if { $::argc > 0 } {
+	for {set i 0} {$i < [llength $::argc]} {incr i} {
+		set option [string trim [lindex $::argv $i]]
+	}
+}
 
-set targetPart ${device}${package}${speed}
-set outputBaseName $top_module
-set outputDir ./report 
-
-#file mkdir $outputDir
 # create project to specify part info (for IPs)
-open_project project
-read_checkpoint $outputDir/${outputBaseName}_routed.dcp
+open_project vivadocompile/vivadocompile.xpr
+read_checkpoint vivadocompile/vivadocompile.runs/impl_1/${argv}_routed.dcp
+open_run impl_1
+set_switching_activity -static_probability 0.5 -toggle_rate 1 -type bram -all
 report_power
-report_power -file $outputDir/${outputBaseName}_power.rpt
+set_switching_activity -static_probability 0.5 -toggle_rate 10 -type bram -all
+report_power
+set_switching_activity -static_probability 0.5 -toggle_rate 20 -type bram -all
+report_power
+set_switching_activity -static_probability 0.5 -toggle_rate 50 -type bram -all
+report_power
+set_switching_activity -static_probability 0.5 -toggle_rate 100 -type bram -all
+report_power
