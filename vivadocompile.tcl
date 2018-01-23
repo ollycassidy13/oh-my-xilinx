@@ -63,7 +63,7 @@ set proj_dir [get_property directory [current_project]]
 
 # Set project properties
 set obj [get_projects vivadocompile]
-set_property "board_part" "xilinx.com:vc707:part0:1.2" $obj
+#set_property "board_part" "xilinx.com:vc707:part0:1.2" $obj
 set_property "default_lib" "xil_defaultlib" $obj
 set_property "sim.ip.auto_export_scripts" "1" $obj
 set_property "simulator_language" "Mixed" $obj
@@ -131,6 +131,7 @@ if {[string equal [get_runs -quiet synth_1] ""]} {
 set obj [get_runs synth_1]
 
 set_property -name {steps.synth_design.args.more options} -value {-mode out_of_context} -objects $obj
+set_property STEPS.SYNTH_DESIGN.ARGS.RETIMING true [get_runs synth_1]
 #set_property "steps.synth_design.args.flatten_hierarchy" "none" $obj
 #set_property "steps.synth_design.args.fanout_limit" "400" $obj
 #set_property "steps.synth_design.args.keep_equivalent_registers" "1" $obj
