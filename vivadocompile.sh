@@ -4,7 +4,7 @@
 #	Clock:		clock = 2ns 
 #	File:		*.vhd, *.vhdl, *.v all in same directory..
 #	Results:	stored in ./results_$1
-#	Board:		VC707 - Virtex-7 VX485T FPGA
+#	Board:		PYNQ Z-1
 
 # test if we're passing argument to script..
 if ((${+1}))

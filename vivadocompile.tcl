@@ -57,7 +57,7 @@ if { $::argc > 0 } {
 set orig_proj_dir "[file normalize "$origin_dir/vivadocompile"]"
 
 # Create project
-create_project -force vivadocompile ./vivadocompile
+create_project -force vivadocompile ./vivadocompile -part $fpga_part
 
 # Set the directory path for the new project
 set proj_dir [get_property directory [current_project]]
