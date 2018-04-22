@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # --- Assumptions ---
-#	Clock:		clock = 2ns 
+#	Clock:		clock = 2ns
 #	File:		*.vhd, *.vhdl, *.v all in same directory..
 #	Results:	stored in ./results_$1
 #	Board:		PYNQ Z-1
@@ -29,7 +29,7 @@ cp ../*.v .
 cp ../*.h .
 cp ../*.xdc .
 
-cp ~/.oh-my-xilinx/vivadocompile.tcl $1.tcl
+cp $OHMYXILINX/vivadocompile.tcl $1.tcl
 touch dummy_nachiket_fooling_zsh_for_loops.h
 
 echo "set files [list \\" > sources.tcl
@@ -54,7 +54,7 @@ do
 done
 
 # caution: this overwrites the local $1.xdc file if that exists
-cat ~/.oh-my-xilinx/vivadocompile.xdc >> $1.xdc
+cat $OHMYXILINX/vivadocompile.xdc >> $1.xdc
 sed -i "s/clk/$2/g" $1.xdc
 
 for i in *.xdc

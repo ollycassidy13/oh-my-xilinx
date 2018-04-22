@@ -1,4 +1,4 @@
-These are shell scripts for invoking the Xilinx Vivado toolchain on smallish RTL projects to quickly estimate resource utilization and timing of designs. The hardware is assumed to be the VC707 board. (repo named after the cool .oh-my-zsh project)
+These are shell scripts for invoking the Xilinx Vivado toolchain on smallish RTL projects to quickly estimate resource utilization and timing of designs. The hardware is assumed to be the PYNQ board. (repo named after the cool .oh-my-zsh project)
 
 ----------------
 How it works
@@ -9,25 +9,28 @@ The script adds all Verilog or VHDL files in given folder to a Vivado project an
 How to install
 ----------------
 
-You need to clone the directory in the $HOME folder. Note that you need to rename the directory after cloning.
+You need to clone the directory, then export an environment variable that
+specifies this location as OHMYXILINX:
 
-```git clone git@git.bitbucket.com:nachiketkapre/oh-my-xilinx.git ~/.oh-my-xilinx```
+```git clone git@git.bitbucket.com:maltanar/oh-my-xilinx.git /path/to/local/dir```
+```export OHMYXILINX=/path/to/local/dir```
 
 Probably want to modify PATH variable in vivadocompile.sh appropriately for your setup.
 
 --------------
 How to run
 --------------
-Set your PATH variable to include ~/.oh-my-xilinx. Also make sure the XILINX paths are properly setup as well.
+Set your PATH variable to include $OHMYXILINX. Also make sure the Xilinx paths
+are properly setup as well, i.e. vivado should be on PATH.
 
-```export PATH=$PATH:~/.oh-my-xilinx```
+```export PATH=$PATH:$OHMYXILINX```
 
 To compile code sitting inside a folder just run:
 
 ```vivadocompile.sh <top-level-entity> <clock-name>```
 
 To collect results in a nice summary run:
- 
+
 ```vivadoresults.sh <top-level-entity>```
 
 --------------
@@ -38,4 +41,5 @@ Tested to work on Ubuntu 14.04 64b and Vivado 2015.4 toolchain. Older Xilinx rel
 --------------
 Author Notes
 --------------
-Contact: Nachiket Kapre (nachiket@ieee.org)
+Original: Nachiket Kapre (nachiket@ieee.org)
+Modifications: Yaman Umuroglu (maltanar@gmail.com)
