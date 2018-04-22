@@ -9,7 +9,12 @@ The script adds all Verilog or VHDL files in given folder to a Vivado project an
 How to install
 ----------------
 
-You need to clone the directory, then export an environment variable that
+First, install zsh on your system. For most distros this is available in the
+package manager, so for Ubuntu/Debian you could do:
+
+```sudo apt install zsh```
+
+Now clone the git repository, then export an environment variable that
 specifies this location as OHMYXILINX:
 
 ```git clone git@git.bitbucket.com:maltanar/oh-my-xilinx.git /path/to/local/dir```
