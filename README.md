@@ -1,4 +1,6 @@
-These are shell scripts for invoking the Xilinx Vivado toolchain on smallish RTL projects to quickly estimate resource utilization and timing of designs. The hardware is assumed to be the PYNQ board. (repo named after the cool .oh-my-zsh project)
+These are shell scripts for invoking the Xilinx Vivado toolchain on smallish RTL projects to quickly estimate resource utilization and timing of designs. 
+The hardware (fpga_part) is assumed to be the PYNQ board, but can be specified as a command line argument. 
+(repo named after the cool .oh-my-zsh project)
 
 ----------------
 How it works
@@ -32,7 +34,7 @@ are properly setup as well, i.e. vivado should be on PATH.
 
 To compile code sitting inside a folder just run:
 
-```vivadocompile.sh <top-level-entity> <clock-name>```
+```vivadocompile.sh <top-level-entity> <clock-name (optional)> <fpga-part (optional)>```
 
 To collect results in a nice summary run:
 
