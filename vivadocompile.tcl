@@ -1,9 +1,9 @@
+# Note: must define fpga_part for this tcl script to run
 # Vivado (TM) v2015.4.1 (64-bit)
 #*****************************************************************************************
 
 # Set the reference directory for source file relative paths (by default the value is script directory path)
 set origin_dir "."
-set fpga_part "xc7z020clg400-1"
 
 # Use origin directory path location variable, if specified in the tcl shell
 if { [info exists ::origin_dir_loc] } {

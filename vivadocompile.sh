@@ -10,13 +10,14 @@
 if ((${+1}))
 then
 else
-	echo "Usage: vivadocompile.sh <top-level-entity-name> <clk-name (optional)>";
+	echo "Usage: vivadocompile.sh <top-level-entity-name> <clk-name (optional)> <fpga-part (optional)>";
 	echo "<top-level-entity-name> should not contain the .v or .vhd extension";
 	exit;
 fi
 
 # use clk as default name for clock signal if not supplied.
 echo ${2:=clk}
+echo ${3:=xc7z020clg400-1}
 
 # clean results..
 rm -rf results_$1
@@ -29,7 +30,9 @@ cp ../*.v .
 cp ../*.h .
 cp ../*.xdc .
 
-cp $OHMYXILINX/vivadocompile.tcl $1.tcl
+#put FPGA part to be used into the project compile tcl script
+echo "set fpga_part \"$3\"" > $1.tcl
+cat $OHMYXILINX/vivadocompile.tcl >> $1.tcl
 touch dummy_nachiket_fooling_zsh_for_loops.h
 
 echo "set files [list \\" > sources.tcl
