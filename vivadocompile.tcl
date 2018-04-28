@@ -172,14 +172,14 @@ report_power
 set util_lut [llength [get_cells -hier -filter {PRIMITIVE_GROUP == LUT}]]
 set util_ff [llength [get_cells -hier -filter {PRIMITIVE_GROUP =~ FLOP*}]]
 set util_dsp [llength [get_cells -hier -filter {PRIMITIVE_GROUP == DSP}]]
-set util_ram [llength [get_cells -hier -filter {PRIMITIVE_GROUP == BRAM}]]
+set util_bram [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *BMEM.bram.RAMB*}]]
 set time_wns [get_property STATS.WNS [current_run]]
 
 set fp [open res.txt w]
 puts $fp "LUT=$util_lut"
 puts $fp "FF=$util_ff"
 puts $fp "DSP=$util_dsp"
-puts $fp "BRAM=$util_ram"
+puts $fp "BRAM=$util_bram"
 puts $fp "WNS=$time_wns"
 close $fp
 
