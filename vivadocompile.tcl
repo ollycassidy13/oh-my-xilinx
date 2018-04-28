@@ -168,4 +168,17 @@ open_run impl_1
 report_utilization
 report_timing
 report_power
+
+set util_lut [llength [get_cells -hier -filter {PRIMITIVE_GROUP == LUT}]]
+set util_ram [llength [get_cells -hier -filter {PRIMITIVE_GROUP == BRAM}]]
+set util_dsp [llength [get_cells -hier -filter {PRIMITIVE_GROUP == DSP}]]
+set time_wns [get_property STATS.WNS [current_run]]
+
+set fp [open res.txt w]
+puts $fp "LUT=$util_lut"
+puts $fp "BRAM=$util_ram"
+puts $fp "DSP=$util_dsp"
+puts $fp "WNS=$time_wns"
+close $fp
+
 exit
