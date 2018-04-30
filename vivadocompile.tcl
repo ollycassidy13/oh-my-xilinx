@@ -169,10 +169,10 @@ report_utilization
 report_timing
 report_power
 
-set util_lut [llength [get_cells -hier -filter {PRIMITIVE_SUBGROUP == LUT}]]
-set util_ff [llength [get_cells -hier -filter {PRIMITIVE_SUBGROUP == SDR}]]
+set util_lut [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *LUT*}]]
+set util_ff [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *.F*E*}]]
 set util_dsp [llength [get_cells -hier -filter {PRIMITIVE_GROUP == DSP}]]
-set util_bram [llength [get_cells -hier -filter {PRIMITIVE_SUBGROUP == BRAM}]]
+set util_bram [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *BRAM*}]]
 #set time_wns [get_property STATS.WNS [current_run]]
 set time_wns [get_property SLACK [get_timing_paths]]
 
