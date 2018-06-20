@@ -121,14 +121,9 @@ set_property "top" "$argv" $obj
 set_property "xelab.nosort" "1" $obj
 set_property "xelab.unifast" "" $obj
 
-# Create 'synth_1' run (if not found)
-if {[string equal [get_runs -quiet synth_1] ""]} {
-  create_run -name synth_1 -part $fpga_part -flow {Vivado Synthesis 2018} -strategy "Vivado Synthesis Defaults" -constrset constrs_1 -mode out_of_context
-} else {
-  set_property strategy "Vivado Synthesis Defaults" [get_runs synth_1]
-  #set_property strategy "Flow_PerfOptimized_high" [get_runs synth_1]
-  set_property flow "Vivado Synthesis 2018" [get_runs synth_1]
-}
+set_property strategy "Vivado Synthesis Defaults" [get_runs synth_1]
+set_property strategy "Flow_PerfOptimized_high" [get_runs synth_1]
+
 set obj [get_runs synth_1]
 
 set_property -name {steps.synth_design.args.more options} -value {-mode out_of_context} -objects $obj
@@ -146,13 +141,8 @@ set_property STEPS.SYNTH_DESIGN.ARGS.RETIMING true [get_runs synth_1]
 # set the current synth run
 current_run -synthesis [get_runs synth_1]
 
-# Create 'impl_1' run (if not found)
-if {[string equal [get_runs -quiet impl_1] ""]} {
-  create_run -name impl_1 -part $fpga_part -flow {Vivado Implementation 2018} -strategy "Vivado Implementation Defaults" -constrset constrs_1 -parent_run synth_1
-} else {
-  set_property strategy "Vivado Implementation Defaults" [get_runs impl_1]
-  set_property flow "Vivado Implementation 2018" [get_runs impl_1]
-}
+set_property strategy "Vivado Implementation Defaults" [get_runs impl_1]
+
 set obj [get_runs impl_1]
 set_property "steps.write_bitstream.args.readback_file" "0" $obj
 set_property "steps.write_bitstream.args.verbose" "0" $obj
