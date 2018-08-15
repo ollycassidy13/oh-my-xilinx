@@ -44,6 +44,10 @@ for i in *.v
 do
 	echo "\"[file normalize \"\$origin_dir/$i\"]\"\\" >> sources.tcl
 done
+for i in *.vhd
+do
+	echo "\"[file normalize \"\$origin_dir/$i\"]\"\\" >> sources.tcl
+done
 echo "]" >> sources.tcl
 echo "add_files -norecurse -fileset \$obj \$files" >> sources.tcl
 
