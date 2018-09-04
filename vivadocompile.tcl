@@ -159,12 +159,17 @@ report_utilization
 report_timing
 report_power
 
-set util_lut [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *LUT*}]]
+set util [report_utilization -return_string]
+set util_lut [exec echo $util | grep LUT | head -n 1 | cut -d| -f3 | tr -d " "]
+
+#set util_lut [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *LUT*}]]
 set util_ff [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *.F*E*}]]
 set util_dsp [llength [get_cells -hier -filter {PRIMITIVE_GROUP == DSP}]]
 set util_bram [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *BRAM*}]]
 #set time_wns [get_property STATS.WNS [current_run]]
 set time_wns [get_property SLACK [get_timing_paths]]
+
+puts "LUT: $util_lut FF: $util_ff DSP: $util_dsp BRAM: $util_bram"
 
 set fp [open res.txt w]
 puts $fp "LUT=$util_lut"
