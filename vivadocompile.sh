@@ -34,19 +34,20 @@ cp ../*.xdc .
 echo "set fpga_part \"$3\"" > $1.tcl
 cat $OHMYXILINX/vivadocompile.tcl >> $1.tcl
 touch dummy_nachiket_fooling_zsh_for_loops.h
+touch dummy_vhdl_file.vhd
 
 echo "set files [list \\" > sources.tcl
 for i in *.h
 do
-	echo "\"[file normalize \"\$origin_dir/$i\"]\"\\" >> sources.tcl
+	echo "\"[file normalize \"\$origin_dir/$i\"]\"\\" >> sources.tcl;
 done
 for i in *.v
 do
-	echo "\"[file normalize \"\$origin_dir/$i\"]\"\\" >> sources.tcl
+	echo "\"[file normalize \"\$origin_dir/$i\"]\"\\" >> sources.tcl;
 done
 for i in *.vhd
 do
-	echo "\"[file normalize \"\$origin_dir/$i\"]\"\\" >> sources.tcl
+	echo "\"[file normalize \"\$origin_dir/$i\"]\"\\" >> sources.tcl;
 done
 echo "]" >> sources.tcl
 echo "add_files -norecurse -fileset \$obj \$files" >> sources.tcl
