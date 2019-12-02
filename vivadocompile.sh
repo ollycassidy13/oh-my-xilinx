@@ -10,7 +10,7 @@
 if ((${+1}))
 then
 else
-	echo "Usage: vivadocompile.sh <top-level-entity-name> <clk-name (optional)> <fpga-part (optional)>";
+	echo "Usage: vivadocompile.sh <top-level-entity-name> <clk-name (optional)> <fpga-part (optional)> <clk-period-ns (optional)>";
 	echo "<top-level-entity-name> should not contain the .v or .vhd extension";
 	exit;
 fi
@@ -18,6 +18,7 @@ fi
 # use clk as default name for clock signal if not supplied.
 echo ${2:=clk}
 echo ${3:=xc7z020clg400-1}
+echo ${4:=2.0}
 
 # clean results..
 rm -rf results_$1
@@ -64,6 +65,7 @@ done
 # caution: this overwrites the local $1.xdc file if that exists
 cat $OHMYXILINX/vivadocompile.xdc >> $1.xdc
 sed -i "s/clk/$2/g" $1.xdc
+sed -i "s/CLK_PERIOD_NS/$4/g" $1.xdc
 
 for i in *.xdc
 do
