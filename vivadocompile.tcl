@@ -177,7 +177,7 @@ set util_bram [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *BRAM*}]]
 set time_wns [get_property SLACK [get_timing_paths]]
 set util_carry [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *CARRY*}]]
 set util_uram [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *URAM*}]]
-set vivado_version [version]
+set vivado_version [version -short]
 set vivado_build_no [exec echo $util | grep Build | head -n 1 | cut -d\  -f9]
 
 puts "LUT: $util_lut FF: $util_ff DSP: $util_dsp BRAM: $util_bram"
