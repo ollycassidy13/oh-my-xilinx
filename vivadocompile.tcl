@@ -178,6 +178,7 @@ set time_wns [get_property SLACK [get_timing_paths]]
 set util_carry [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *CARRY*}]]
 set util_uram [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *URAM*}]]
 set vivado_version [version]
+set vivado_build_no [exec echo $util | grep Build | head -n 1 | cut -d\  -f9]
 
 puts "LUT: $util_lut FF: $util_ff DSP: $util_dsp BRAM: $util_bram"
 
@@ -194,6 +195,7 @@ puts $fp "Carry=$util_carry"
 puts $fp "WNS=$time_wns"
 puts $fp "Delay=$time_wns"
 puts $fp "vivado_version=$vivado_version"
+puts $fp "vivado_build_no=$vivado_build_no"
 
 close $fp
 
