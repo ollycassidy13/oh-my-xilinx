@@ -190,7 +190,7 @@ puts $fp "BRAM=$util_bram"
 puts $fp "BRAM_18k=$util_bram18"
 puts $fp "BRAM_36k=$util_bram36"
 puts $fp "URAM=$util_uram"
-#puts $fp "WNS=$time_wns"
+puts $fp "WNS=$time_wns"
 puts $fp "Delay=$time_wns"
 puts $fp "vivado_version=$vivado_version"
 
