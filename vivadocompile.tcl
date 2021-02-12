@@ -164,22 +164,36 @@ report_power
 
 set util [report_utilization -return_string]
 set util_lut [exec echo $util | grep LUT | head -n 1 | cut -d| -f3 | tr -d " "]
+set util_lutram [exec echo $util | grep LUT | head -n 3 | tail -1 | cut -d| -f3 | tr -d " "]
+set util_bram18 [exec echo $util | grep RAMB18 | head -n 1 | cut -d| -f3 | tr -d " "]
+set util_bram36 [exec echo $util | grep RAMB36 | head -n 1 | cut -d| -f3 | tr -d " "]
+set util_uram [exec echo $util | grep URAM | head -n 1 | cut -d| -f3 | tr -d " "]
 
 #set util_lut [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *LUT*}]]
 set util_ff [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *.F*E*}]]
 set util_dsp [llength [get_cells -hier -filter {PRIMITIVE_GROUP == DSP}]]
-set util_bram [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *BRAM*}]]
+set util_bram [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *BRAM*}]] 
 #set time_wns [get_property STATS.WNS [current_run]]
 set time_wns [get_property SLACK [get_timing_paths]]
+set util_carry8 [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *CARRY8*}]]
+#set util_uram [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *URAM*}]]
+set vivado_version [version -short]
 
 puts "LUT: $util_lut FF: $util_ff DSP: $util_dsp BRAM: $util_bram"
 
 set fp [open res.txt w]
 puts $fp "LUT=$util_lut"
+puts $fp "LUTRAM=$util_lutram"
 puts $fp "FF=$util_ff"
 puts $fp "DSP=$util_dsp"
 puts $fp "BRAM=$util_bram"
-puts $fp "WNS=$time_wns"
+puts $fp "BRAM_18k=$util_bram18"
+puts $fp "BRAM_36k=$util_bram36"
+puts $fp "URAM=$util_uram"
+#puts $fp "WNS=$time_wns"
+puts $fp "Delay=$time_wns"
+puts $fp "vivado_version=$vivado_version"
+
 close $fp
 
 exit
