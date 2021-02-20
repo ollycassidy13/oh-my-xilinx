@@ -164,10 +164,9 @@ report_power
 
 set util [report_utilization -return_string]
 set util_lut [exec echo $util | grep LUT | head -n 1 | cut -d| -f3 | tr -d " "]
+
+#gets LUTRAMs ("LUT as Memory")
 set util_lutram [exec echo $util | grep LUT | head -n 3 | tail -1 | cut -d| -f3 | tr -d " "]
-set util_bram18 [exec echo $util | grep RAMB18 | head -n 1 | cut -d| -f3 | tr -d " "]
-set util_bram36 [exec echo $util | grep RAMB36 | head -n 1 | cut -d| -f3 | tr -d " "]
-#set util_uram [exec echo $util | grep URAM | head -n 1 | cut -d| -f3 | tr -d " "]
 
 #set util_lut [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *LUT*}]]
 set util_ff [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *.F*E*}]]
@@ -175,6 +174,9 @@ set util_dsp [llength [get_cells -hier -filter {PRIMITIVE_GROUP == DSP}]]
 set util_bram [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *BRAM*}]] 
 #set time_wns [get_property STATS.WNS [current_run]]
 set time_wns [get_property SLACK [get_timing_paths]]
+
+set util_bram18 [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *RAMB18*}]]
+set util_bram36 [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *RAMB36*}]]
 set util_carry [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *CARRY*}]]
 set util_uram [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *URAM*}]]
 set vivado_version [version -short]
