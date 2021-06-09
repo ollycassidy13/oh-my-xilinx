@@ -36,7 +36,7 @@ cp ../*.xdc .
 echo "set fpga_part \"$3\"" > $1.tcl
 cat $OHMYXILINX/vivadocompile.tcl >> $1.tcl
 if [ $5  = "true" ]; then
-	echo "write_verilog -mode funcsim ${1}post_synth.v" >> $1.tcl
+	echo "write_verilog -mode funcsim ${1}_post_synth.v" >> $1.tcl
 fi
 echo "exit" >> $1.tcl
 touch dummy_nachiket_fooling_zsh_for_loops.h
