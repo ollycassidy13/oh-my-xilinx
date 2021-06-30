@@ -10,7 +10,7 @@
 if ((${+1}))
 then
 else
-	echo "Usage: vivadocompile.sh <top-level-entity-name> <clk-name (optional)> <fpga-part (optional)> <clk-period-ns (optional)> <post-synthesis (optional)>";
+	echo "Usage: vivadocompile.sh <top-level-entity-name> <clk-name (optional)> <fpga-part (optional)> <clk-period-ns (optional)> <gen-postsynth-verilog (optional)>";
 	echo "<top-level-entity-name> should not contain the .v or .vhd extension";
 	exit;
 fi
@@ -19,7 +19,7 @@ fi
 echo ${2:=clk}
 echo ${3:=xc7z020clg400-1}
 echo ${4:=2.0}
-echo ${5:=false}
+echo ${5:=0}
 
 # clean results..
 rm -rf results_$1
@@ -35,7 +35,7 @@ cp ../*.xdc .
 #put FPGA part to be used into the project compile tcl script
 echo "set fpga_part \"$3\"" > $1.tcl
 cat $OHMYXILINX/vivadocompile.tcl >> $1.tcl
-if [ $5  = "true" ]; then
+if [ $5  = 1 ]; then
 	echo "write_verilog -mode funcsim ${1}_post_synth.v" >> $1.tcl
 fi
 echo "exit" >> $1.tcl
