@@ -182,4 +182,4 @@ puts $fp "BRAM=$util_bram"
 puts $fp "WNS=$time_wns"
 close $fp
 
-exit
+
