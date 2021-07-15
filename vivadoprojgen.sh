@@ -31,7 +31,7 @@ cp ../*.vhd .
 cp ../*.v .
 cp ../*.h .
 cp ../*.xdc .
-
+cp ../*.vh .
 #put FPGA part to be used into the project compile tcl script
 echo "set fpga_part \"$3\"" > $1.tcl
 cat $OHMYXILINX/vivadocompile.tcl >> $1.tcl
