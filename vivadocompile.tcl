@@ -201,4 +201,4 @@ puts $fp "vivado_build_no=$vivado_build_no"
 
 close $fp
 
-exit
+
