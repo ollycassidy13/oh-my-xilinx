@@ -171,7 +171,7 @@ set util_lutram [exec echo $util | grep LUT | head -n 3 | tail -1 | cut -d| -f3 
 #set util_lut [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *LUT*}]]
 set util_ff [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *.F*E*}]]
 set util_dsp [llength [get_cells -hier -filter {PRIMITIVE_GROUP == DSP}]]
-set util_bram [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *BRAM*}]] 
+#set util_bram [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *BRAM*}]] 
 #set time_wns [get_property STATS.WNS [current_run]]
 set time_wns [get_property SLACK [get_timing_paths]]
 
@@ -181,6 +181,8 @@ set util_carry [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *CARRY*}]]
 set util_uram [llength [get_cells -hier -filter {PRIMITIVE_TYPE =~ *URAM*}]]
 set vivado_version [version -short]
 set vivado_build_no [exec echo $util | grep Build | head -n 1 | cut -d\  -f9]
+set util_bram [expr $util_bram18/2 + $util_bram36]
+
 
 puts "LUT: $util_lut FF: $util_ff DSP: $util_dsp BRAM: $util_bram"
 
