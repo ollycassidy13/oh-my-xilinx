@@ -2,7 +2,7 @@
 
 # --- Assumptions ---
 #	Clock:		clock = 2ns
-#	File:		*.vhd, *.vhdl, *.v all in same directory..
+#	File:		*.vhd, *.v, *.sv all in same directory..
 #	Results:	stored in ./results_$1
 #	Board:		PYNQ Z-1
 
@@ -32,6 +32,7 @@ cp ../*.v .
 cp ../*.h .
 cp ../*.xdc .
 cp ../*.vh .
+cp ../*.sv .
 #put FPGA part to be used into the project compile tcl script
 echo "set fpga_part \"$3\"" > $1.tcl
 cat $OHMYXILINX/vivadocompile.tcl >> $1.tcl
@@ -41,6 +42,7 @@ fi
 echo "exit" >> $1.tcl
 touch dummy_nachiket_fooling_zsh_for_loops.h
 touch dummy_vhdl_file.vhd
+touch dummy_sv_file.sv
 
 echo "set files [list \\" > sources.tcl
 for i in *.h
@@ -48,6 +50,10 @@ do
 	echo "\"[file normalize \"\$origin_dir/$i\"]\"\\" >> sources.tcl;
 done
 for i in *.v
+do
+	echo "\"[file normalize \"\$origin_dir/$i\"]\"\\" >> sources.tcl;
+done
+for i in *.sv
 do
 	echo "\"[file normalize \"\$origin_dir/$i\"]\"\\" >> sources.tcl;
 done
