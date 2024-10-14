@@ -10,7 +10,7 @@
 if ((${+1}))
 then
 else
-	echo "Usage: vivadocompile.sh <top-level-entity-name> <clk-name (optional)> <fpga-part (optional)> <clk-period-ns (optional)> <gen-postsynth-verilog (optional)>";
+	echo "Usage: vivadocompile.sh <top-level-entity-name> <clk-name (optional)> <fpga-part (optional)> <clk-period-ns (optional)> <gen-postsynth-verilog (optional)> <verilog-directory>";
 	echo "<top-level-entity-name> should not contain the .v or .vhd extension";
 	exit;
 fi

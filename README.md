@@ -19,7 +19,7 @@ package manager, so for Ubuntu/Debian you could do:
 Now clone the git repository, then export an environment variable that
 specifies this location as OHMYXILINX:
 
-```git clone git@git.bitbucket.com:maltanar/oh-my-xilinx.git /path/to/local/dir```
+```git clone ollycassidy13/oh-my-xilinx.git /path/to/local/dir```
 ```export OHMYXILINX=/path/to/local/dir```
 
 Probably want to modify PATH variable in vivadocompile.sh appropriately for your setup.
@@ -34,11 +34,16 @@ are properly setup as well, i.e. vivado should be on PATH.
 
 To compile code sitting inside a folder just run:
 
-```vivadocompile.sh <top-level-entity> <clock-name (optional)> <fpga-part (optional)>```
+```vivadocompile.sh <top-level-entity> <clock-name (optional)> <fpga-part (optional)>  <verilog-directory>```
 
 To collect results in a nice summary run:
 
 ```vivadoresults.sh <top-level-entity>```
+
+--------------
+Major Modifications
+--------------
+Added directory argument to enable multiple instances to be run at once when calling from the command line as part of a larger toolflow.
 
 --------------
 Testing Notes
@@ -49,4 +54,4 @@ Tested to work on Ubuntu 14.04 64b and Vivado 2015.4 toolchain. Older Xilinx rel
 Author Notes
 --------------
 Original: Nachiket Kapre (nachiket@ieee.org)
-Modifications: Yaman Umuroglu (maltanar@gmail.com)
+Modifications: Yaman Umuroglu (maltanar@gmail.com), Oliver Cassidy (olly.cassidy23@imperial.ac.uk)
