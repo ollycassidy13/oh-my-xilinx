@@ -43,7 +43,7 @@ To collect results in a nice summary run:
 --------------
 Major Modifications
 --------------
-Added directory argument to enable multiple instances to be run at once when calling from the command line as part of a larger toolflow.
+Added directory argument to enable multiple instances to be run at once when calling from the command line as part of a larger toolflow. Updated vivadocompile.tcl to fit the intended toolflow of this version better.
 
 --------------
 Testing Notes
