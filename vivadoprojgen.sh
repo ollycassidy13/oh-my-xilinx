@@ -2,7 +2,7 @@
 
 # --- Assumptions ---
 #	Clock:		clock = 2ns
-#	File:		*.vhd, *.v, *.sv all in same directory..
+#	File:		*.vhd, *.vhdl, *.v all in same directory..
 #	Results:	stored in ./results_$1
 #	Board:		PYNQ Z-1
 
@@ -20,19 +20,18 @@ echo ${2:=clk}
 echo ${3:=xc7z020clg400-1}
 echo ${4:=2.0}
 echo ${5:=0}
+echo ${6:=.}
 
 # clean results..
 rm -rf results_$1
 mkdir results_$1
 cd results_$1
+touch res.txt
+mkdir $1
 
 # put all files in a prf file..
-cp ../*.vhd .
-cp ../*.v .
-cp ../*.h .
-cp ../*.xdc .
-cp ../*.vh .
-cp ../*.sv .
+# cp /home/ojc23/NeuraLUT_Private/datasets/jet_substructure/test_0dcbb1/verilog/*.v .
+cp $6/*.v .
 #put FPGA part to be used into the project compile tcl script
 echo "set fpga_part \"$3\"" > $1.tcl
 cat $OHMYXILINX/vivadocompile.tcl >> $1.tcl
@@ -42,7 +41,6 @@ fi
 echo "exit" >> $1.tcl
 touch dummy_nachiket_fooling_zsh_for_loops.h
 touch dummy_vhdl_file.vhd
-touch dummy_sv_file.sv
 
 echo "set files [list \\" > sources.tcl
 for i in *.h
@@ -50,10 +48,6 @@ do
 	echo "\"[file normalize \"\$origin_dir/$i\"]\"\\" >> sources.tcl;
 done
 for i in *.v
-do
-	echo "\"[file normalize \"\$origin_dir/$i\"]\"\\" >> sources.tcl;
-done
-for i in *.sv
 do
 	echo "\"[file normalize \"\$origin_dir/$i\"]\"\\" >> sources.tcl;
 done

@@ -58,6 +58,7 @@ set orig_proj_dir "[file normalize "$origin_dir/vivadocompile"]"
 
 # Create project
 create_project -force vivadocompile ./vivadocompile -part $fpga_part
+puts "created project"
 
 # Set the directory path for the new project
 set proj_dir [get_property directory [current_project]]
@@ -123,6 +124,7 @@ set_property "xelab.unifast" "" $obj
 
 set_property strategy "Vivado Synthesis Defaults" [get_runs synth_1]
 set_property strategy "Flow_PerfOptimized_high" [get_runs synth_1]
+puts "strategy Flow_PerfOptimized_high"
 
 # do not ignore failure-level VHDL assertions
 set_param synth.elaboration.rodinMoreOptions {rt::set_parameter ignoreVhdlAssertStmts false}
@@ -131,29 +133,34 @@ set obj [get_runs synth_1]
 
 set_property -name {steps.synth_design.args.more options} -value {-mode out_of_context} -objects $obj
 set_property STEPS.SYNTH_DESIGN.ARGS.RETIMING true [get_runs synth_1]
-#set_property "steps.synth_design.args.flatten_hierarchy" "none" $obj
-#set_property "steps.synth_design.args.fanout_limit" "400" $obj
-#set_property "steps.synth_design.args.keep_equivalent_registers" "1" $obj
-#set_property "steps.synth_design.args.resource_sharing" "on" $obj
-#set_property "steps.synth_design.args.no_lc" "1" $obj
-#set_property "steps.synth_design.args.shreg_min_size" "5" $obj
-#set_property "steps.synth_design.args.max_bram" "0" $obj
-#set_property "steps.synth_design.args.max_dsp" "0" $obj
 
 
-# set the current synth run
-current_run -synthesis [get_runs synth_1]
 
-set_property strategy "Vivado Implementation Defaults" [get_runs impl_1]
+reset_run synth_1
+puts "reset_run synth_1"
 
-# set the current impl run
-current_run -implementation [get_runs impl_1]
+launch_runs synth_1 -jobs 20
+puts "launch_runs synth_1 -jobs 20"
+wait_on_run synth_1
+puts "wait_on_run synth_1"
 
-puts "INFO: Project created:vivadocompile"
 
-launch_runs -jobs 8 impl_1 -to_step route_design
+open_run synth_1 -name netlist_1
+puts "open_run synth_1 -name netlist_1"
+
+
+reset_runs impl_1
+puts "reset_runs impl_1"
+launch_runs impl_1 -jobs 20
+puts "launch_runs impl_1 -jobs 20"
 wait_on_run impl_1
+puts "wait_on_run impl_1"
+
+
 open_run impl_1
+puts "open_run impl_1"
+
+
 report_utilization
 report_timing
 report_power
@@ -198,5 +205,3 @@ puts $fp "vivado_version=$vivado_version"
 puts $fp "vivado_build_no=$vivado_build_no"
 
 close $fp
-
-
