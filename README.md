@@ -34,7 +34,7 @@ are properly setup as well, i.e. vivado should be on PATH.
 
 To compile code sitting inside a folder just run:
 
-```vivadocompile.sh <top-level-entity> <clock-name (optional)> <fpga-part (optional)>  <verilog-directory>```
+```vivadocompile.sh <top-level-entity> <clock-name (optional)> <fpga-part (optional)> <clk-period-ns (optional)> <gen-postsynth-verilog (optional)> <verilog-directory> <use in-context synthesis (optional, default: out-of-context)>```
 
 To collect results in a nice summary run:
 
