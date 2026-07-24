@@ -131,15 +131,15 @@ set_param synth.elaboration.rodinMoreOptions {rt::set_parameter ignoreVhdlAssert
 
 set obj [get_runs synth_1]
 
-if { $use_ooc } {
-    puts "Enabling OOC synthesis"
-    set_property -name {steps.synth_design.args.more options} \
-                  -value {-mode out_of_context} \
-                  -objects $obj
-} else {
+if { $use_incontext } {
     puts "Standard in-context synthesis"
     set_property -name {steps.synth_design.args.more options} \
                   -value {} \
+                  -objects $obj
+} else {
+    puts "Enabling OOC synthesis"
+    set_property -name {steps.synth_design.args.more options} \
+                  -value {-mode out_of_context} \
                   -objects $obj
 }
 
